@@ -3,7 +3,7 @@ spring:
     name: demo-secrets-config-client
   config:
     import:
-     - "optional:configserver:"
+     - "configserver:"
      - "optional:configtree:./secret-config-root/"
   cloud:
     config:

@@ -14,10 +14,15 @@ spring:
 
 my-config-base:
   url: example.com
-  pass-word: dummy-password-needed
+  passWord: dummy-password-needed
+  another-value: dummy-password-needed
 
 another-config:
-  url: ${my-config-base.url}
+  value1: ${my-config-base.pass-word}
+  value2: ${my-config-base.another-value}
+  value3: ${my-config-base.passWord}
+  value4: ${my-config-base.anotherValue} # DOES NOT WORK because casing seems to be broken in binder
+  # logs LOOK HERE AT THIS config: AnotherConfig(value1=dummy-password-needed, value2=dummy-password-needed, value3=dummy-password-needed, value4=${my-config-base.anotherValue})
 
 server:
   port: 9333

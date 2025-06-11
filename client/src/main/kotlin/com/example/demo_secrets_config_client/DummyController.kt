@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class DummyController(private val config: AnotherConfig) {
     init {
-        log.info("got config: {}", config)
+        log.info("LOOK HERE AT THIS config: {}", config)
     }
     @GetMapping
     fun hello(): String {
-        return "HELLO ${config.url}"
+        return "HELLO $config"
     }
 
     companion object {

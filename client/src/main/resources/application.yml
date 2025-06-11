@@ -3,12 +3,21 @@ spring:
     name: demo-secrets-config-client
   config:
     import:
-     - "configserver:"
-     - "optional:configtree:./secret-config-root/"
+     - "optional:configserver:"
+     # - "optional:configtree:./secret-config-root/"
   cloud:
     config:
       uri: http://localhost:8888
-      password: # ./secret-config-root/spring/cloud/config/password
+      # ./secret-config-root/spring/cloud/config/password
+#      password: ${my-config-base.passWord} # DOES NOT WORK because casing seems to be broken in bootstrap context binder
+      password: ${my-config-base.pass-word}
+
+my-config-base:
+  url: example.com
+  pass-word: dummy-password-needed
+
+another-config:
+  url: ${my-config-base.url}
 
 server:
   port: 9333
